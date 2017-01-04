@@ -1,3 +1,5 @@
+package com.biit.koobepopserver.logger;
+
 import org.apache.log4j.Logger;
 
 import com.biit.logger.BiitLogger;
