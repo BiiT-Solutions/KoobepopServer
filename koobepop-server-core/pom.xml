@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<modelVersion>4.0.0</modelVersion>
+<artifactId>koobepop-server-core</artifactId>
+<packaging>jar</packaging>
+<name>KoobepopServer (Core)</name>
+
+<parent>
+    <groupId>com.biit</groupId>
+    <artifactId>koobepop-server</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+</parent>
+
+<properties>
+    <root.directory>${project.basedir}/..</root.directory>
+</properties>
+
+<dependencies>
+    <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-core</artifactId>
+        <version>${org.springframework.version}</version>
+        <scope>compile</scope>
+    </dependency>
+    <!-- Rest Services security filter bean injection -->
+    <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-web</artifactId>
+        <version>${org.springframework.version}</version>
+    </dependency>
+    <!-- Activiti -->
+    <dependency>
+        <groupId>org.activiti</groupId>
+        <artifactId>activiti-engine</artifactId>
+        <version>${activiti.version}</version>
+    </dependency>
+    <dependency>
+        <groupId>org.activiti</groupId>
+        <artifactId>activiti-spring</artifactId>
+        <version>${activiti.version}</version>
+    </dependency>
+    <dependency>
+        <groupId>com.biit</groupId>
+        <artifactId>${project.parent.artifactId}-persistence</artifactId>
+        <version>${project.version}</version>
+    </dependency>
+
+</dependencies>
+
+<build>
+    <plugins>
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-surefire-plugin</artifactId>
+            <version>${maven-surefire.version}</version>
+            <configuration>
+                <useFile>false</useFile>
+                <trimStackTrace>false</trimStackTrace>
+                <suiteXmlFiles>
+                    <suiteXmlFile>src/test/config/testng.xml</suiteXmlFile>
+                </suiteXmlFiles>
+            </configuration>
+        </plugin>
+    </plugins>
+</build>
+
+</project>

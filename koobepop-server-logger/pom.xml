@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<modelVersion>4.0.0</modelVersion>
+<artifactId>koobepop-server-logger</artifactId>
+<packaging>jar</packaging>
+<name>KoobepopServer (Logger)</name>
+
+<parent>
+    <groupId>com.biit</groupId>
+    <artifactId>koobepop-server</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+</parent>
+
+<properties>
+    <root.directory>${project.basedir}/..</root.directory>
+</properties>
+
+<dependencies>
+    <!-- log4j -->
+    <dependency>
+        <groupId>log4j</groupId>
+        <artifactId>log4j</artifactId>
+        <version>${log4j.version}</version>
+    </dependency>
+    <!-- File access and logger -->
+    <dependency>
+        <groupId>com.biit</groupId>
+        <artifactId>common-utils</artifactId>
+        <version>${biit-common-utils.version}</version>
+    </dependency>
+    <!--   -->
+    <dependency>
+        <groupId>org.aspectj</groupId>
+        <artifactId>aspectjrt</artifactId>
+        <version>${aspectj.version}</version>
+    </dependency>
+    <dependency>
+        <groupId>org.aspectj</groupId>
+        <artifactId>aspectjweaver</artifactId>
+        <version>${aspectj.version}</version>
+    </dependency>
+</dependencies>
+</project>
