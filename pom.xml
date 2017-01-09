@@ -53,7 +53,8 @@
 		<rest-services-security.version>[0.1,0.2)</rest-services-security.version>
 		<activiti.version>5.16.1</activiti.version>
 		<maven-surefire.version>2.19.1</maven-surefire.version>
-		<log4j.version>1.2.17</log4j.version>
+		<log4j.version>1.2.17</log4j.version>		
+		<slf4j-log4j12.version>1.7.7</slf4j-log4j12.version>
 		<biit-common-utils.version>[0.4,0.5)</biit-common-utils.version>
 		<aspectj.version>1.8.2</aspectj.version>
 		<org.testng.version>6.8.7</org.testng.version>
@@ -61,6 +62,10 @@
 		<project.scm.id>git</project.scm.id>
 		<maven-release-plugin.version>2.5.1</maven-release-plugin.version>
 		<maven-resources-plugin.version>2.7</maven-resources-plugin.version>
+		<maven-antrun-plugin.version>1.7</maven-antrun-plugin.version>
+		<mysql-odbc.version>5.1.27</mysql-odbc.version>
+		<!-- BiiT Variables -->
+		<storableobject-persistence-manager.version>[0.3,0.4)</storableobject-persistence-manager.version>
 	</properties>
 
 	<!-- -->

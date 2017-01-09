@@ -3,11 +3,13 @@
 	<test name="KoobepopTest" enabled="true" preserve-order="true">
 		<groups>
 			<run>
-				
+				<include name="companyDao" />
+				<exclude name="contactDao" />
 			</run>
 		</groups>
 		<classes>
-
+			<class name="com.biit.koobepopserver.persistence.dao.jpa.CompanyDaoTest" />
+			<class name="com.biit.koobepopserver.persistence.dao.jpa.ContactDaoTest" />
 		</classes>
 	</test>
 </suite>
