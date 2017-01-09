@@ -4,7 +4,7 @@
 		<groups>
 			<run>
 				<include name="companyDao" />
-				<exclude name="contactDao" />
+				<include name="contactDao" />
 			</run>
 		</groups>
 		<classes>

@@ -2,7 +2,8 @@ package com.biit.koobepopserver.persistence.entity;
 
 import javax.persistence.Cacheable;
 import javax.persistence.Entity;
-import javax.persistence.OneToOne;
+import javax.persistence.FetchType;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.Cache;
@@ -13,7 +14,7 @@ import com.biit.persistence.entity.BaseStorableObject;
 @Entity
 @Table(name = "contacts")
 @Cacheable(true)
-@Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = "com.biit.koobepopserver.persistence.entity.Brand")
+@Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = "com.biit.koobepopserver.persistence.entity.Contact")
 public class Contact extends BaseStorableObject {
 
 	private static final long serialVersionUID = 1172630136348751139L;
@@ -23,8 +24,8 @@ public class Contact extends BaseStorableObject {
 	private String phone;
 
 	private String mail;
-
-	@OneToOne(optional = false)
+	
+	@ManyToOne(fetch = FetchType.LAZY, optional = false)
 	private Company company;
 
 	public Contact() {

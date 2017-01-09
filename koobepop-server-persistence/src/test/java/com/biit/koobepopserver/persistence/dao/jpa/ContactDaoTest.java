@@ -54,7 +54,7 @@ public class ContactDaoTest extends AbstractTransactionalTestNGSpringContextTest
 	public void storeContact() {
 		Assert.assertTrue(contactDao.getAll().isEmpty());
 		Contact contact = createTestContact(CONTACT_NAME, CONTACT_PHONE, CONTACT_MAIL, company);
-		contactDao.merge(contact);
+		contact=contactDao.merge(contact);
 		Assert.assertFalse(contactDao.getAll().isEmpty());
 	}
 
@@ -90,7 +90,7 @@ public class ContactDaoTest extends AbstractTransactionalTestNGSpringContextTest
 		contact.setName(name);
 		contact.setMail(mail);
 		contact.setPhone(phone);
-		//contact.setCompany(company);
+		contact.setCompany(company);
 		return contact;
 	}
 }

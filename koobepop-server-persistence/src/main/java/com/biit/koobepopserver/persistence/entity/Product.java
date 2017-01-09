@@ -2,6 +2,8 @@ package com.biit.koobepopserver.persistence.entity;
 
 import javax.persistence.Cacheable;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -19,7 +21,7 @@ public class Product extends BaseStorableObject {
 
 	private String name;
 
-	@OneToOne(optional = false)
+	@ManyToOne(fetch = FetchType.LAZY, optional = false)
 	private Company company;
 
 	public Product() {

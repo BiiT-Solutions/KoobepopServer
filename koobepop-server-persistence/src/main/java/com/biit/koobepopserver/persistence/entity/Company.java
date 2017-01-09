@@ -21,12 +21,13 @@ import com.biit.persistence.entity.BaseStorableObject;
 @Entity
 @Table(name = "companies")
 @Cacheable(true)
-@Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = "com.biit.koobepopserver.persistence.entity.Brand")
+@Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = "com.biit.koobepopserver.persistence.entity.Company")
 public class Company extends BaseStorableObject {
 	private static final long serialVersionUID = -925528382828636133L;
 
 	public static final int DESCRIPTION_LENGTH = 1000;
-
+	
+	@Column(nullable=false)
 	private String name;
 
 	@Column(length = DESCRIPTION_LENGTH)
@@ -99,6 +100,19 @@ public class Company extends BaseStorableObject {
 
 	public void setProducts(Set<Product> products) {
 		this.products = products;
+	}
+	
+	public void addContact(Contact contact){
+		
+		if (contact != null && !this.contacts.contains(contact)){
+		this.contacts.add(contact);
+		contact.setCompany(this);
+		}
+	}
+	
+	@Override
+	public String toString(){
+		return getName();
 	}
 	
 }
