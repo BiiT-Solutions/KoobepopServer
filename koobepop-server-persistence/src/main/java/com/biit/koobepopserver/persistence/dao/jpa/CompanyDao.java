@@ -16,7 +16,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.biit.koobepopserver.persistence.dao.ICompanyDao;
 import com.biit.koobepopserver.persistence.entity.Company;
-import com.biit.koobepopserver.persistence.entity.Contact;
 
 @Repository
 public class CompanyDao extends AnnotatedGenericDao<Company, Long> implements ICompanyDao{

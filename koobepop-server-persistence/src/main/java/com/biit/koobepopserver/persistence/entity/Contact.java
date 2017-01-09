@@ -69,6 +69,6 @@ public class Contact extends BaseStorableObject {
 
 	@Override
 	public String toString() {
-		return "Contract [" + getId() + ", " + getName() + "]";
+		return "Contact [" + getId() + ", " + getName() + ", "+getPhone()+", "+getMail()+"]";
 	}
 }

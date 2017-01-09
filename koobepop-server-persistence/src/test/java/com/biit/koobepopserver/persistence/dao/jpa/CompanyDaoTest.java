@@ -27,9 +27,7 @@ public class CompanyDaoTest extends AbstractTransactionalTestNGSpringContextTest
 	private final static String CONTACT_NAME = "Khvote";
 	private final static String CONTACT_MAIL = "kvhote@arcanumTest.com";
 	private final static String CONTACT_PHONE = "000000000";
-	private final static String CONTACT_NAME2 = "Sim";
-	private final static String CONTACT_MAIL2 = "simon@arcanumTest.com";
-	private final static String CONTACT_PHONE2 = "000000001";
+
 	private final static String COMPANY_NAME_1 = "Arcanum";
 
 	private Company company;
@@ -46,14 +44,6 @@ public class CompanyDaoTest extends AbstractTransactionalTestNGSpringContextTest
 		return company;
 	}
 
-	public static Contact createTestContact(String name, String mail, String phone, Company company) {
-		Contact contact = new Contact();
-		contact.setName(name);
-		contact.setMail(mail);
-		contact.setPhone(phone);
-		contact.setCompany(company);
-		return contact;
-	}
 
 	@Test
 	@Rollback(value = false)
@@ -74,13 +64,14 @@ public class CompanyDaoTest extends AbstractTransactionalTestNGSpringContextTest
 	}
 	
 	/**
-	 * 
+	 * TODO Modify company to make a valid test 
 	 * */
 	@Test(dependsOnMethods = { "searchCompany" })
 	@Rollback(value = false)
 	@Transactional(value = TxType.NEVER)
 	public void editCompany() {
-		createTestContact(CONTACT_NAME, CONTACT_MAIL, CONTACT_PHONE, company);
+		ContactDaoTest.createTestContact(CONTACT_NAME, CONTACT_PHONE, CONTACT_MAIL, company);
+		
 		company = companyDao.merge(company);
 		Assert.assertNotNull(contactDao.getAll(CONTACT_NAME, CONTACT_PHONE, CONTACT_MAIL).get(0));
 	}

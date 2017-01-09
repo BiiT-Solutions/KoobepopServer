@@ -27,7 +27,9 @@ public class ContactDaoTest extends AbstractTransactionalTestNGSpringContextTest
 	private final static String CONTACT_NAME = "Khvote";
 	private final static String CONTACT_MAIL = "kvhote@arcanumTest.com";
 	private final static String CONTACT_PHONE = "000000000";
-	private final static String CONTACT_NAME2 = "Sam";
+	private final static String CONTACT_NAME2 = "Sim";
+	private final static String CONTACT_MAIL2 = "simon@arcanumTest.com";
+	private final static String CONTACT_PHONE2 = "000000001";
 	private final static String COMPANY_NAME_1 = "Arcanum";
 
 	private Company company;
@@ -54,7 +56,7 @@ public class ContactDaoTest extends AbstractTransactionalTestNGSpringContextTest
 	public void storeContact() {
 		Assert.assertTrue(contactDao.getAll().isEmpty());
 		Contact contact = createTestContact(CONTACT_NAME, CONTACT_PHONE, CONTACT_MAIL, company);
-		contact=contactDao.merge(contact);
+		contact=contactDao.makePersistent(contact);
 		Assert.assertFalse(contactDao.getAll().isEmpty());
 	}
 
@@ -65,8 +67,25 @@ public class ContactDaoTest extends AbstractTransactionalTestNGSpringContextTest
 		Assert.assertEquals(contactDao.getRowCount(), 1);
 		Assert.assertNotNull(contactDao.getAll(CONTACT_NAME, CONTACT_PHONE, CONTACT_MAIL).get(0));
 	}
-
-	@Test(dependsOnMethods = { "searchContact" })
+	@Test(dependsOnMethods={"searchContact"})
+	@Rollback(value = false)
+	@Transactional(value = TxType.NEVER)
+	public void editContact(){
+		Assert.assertEquals(contactDao.getRowCount(), 1);
+		Contact contact = contactDao.getAll(CONTACT_NAME, CONTACT_PHONE, CONTACT_MAIL).get(0);
+		contact.setName(CONTACT_NAME2);
+		contact.setPhone(CONTACT_PHONE2);
+		contact.setMail(CONTACT_MAIL2);
+		contact = contactDao.merge(contact);
+		Assert.assertEquals(contactDao.getRowCount(), 1);
+		Assert.assertNotNull(contactDao.getAll(CONTACT_NAME2,CONTACT_PHONE2,CONTACT_MAIL2).get(0));
+		contact.setName(CONTACT_NAME);
+		contact.setPhone(CONTACT_PHONE);
+		contact.setMail(CONTACT_MAIL);
+		contactDao.merge(contact);
+	}
+	
+	@Test(dependsOnMethods = { "editContact" })
 	@Rollback(value = false)
 	@Transactional(value = TxType.NEVER)
 	public void removeContact() throws ElementCannotBeRemovedException {
