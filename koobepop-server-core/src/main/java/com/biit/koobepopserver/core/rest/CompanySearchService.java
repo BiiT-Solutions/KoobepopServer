@@ -27,14 +27,13 @@ public class CompanySearchService {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/getCompanies")
 	public Response getCompanySearch(String petition){
-		System.out.println("Petition: "+petition);
 		//TODO end this thing
 		SearchFromJson parsedPetition;
 		try {
 			parsedPetition = parseSearchPetition(petition);
 			List<Company> companies = searchCompanies(parsedPetition);
 			
-			String data = "{\"data\":\"some dummy data\"}";
+			String data = "[{\"name\":\"Company\"}]";
 			return Response.ok((String) data, MediaType.APPLICATION_JSON).build();
 		
 		} catch (JsonSyntaxException ex) {
