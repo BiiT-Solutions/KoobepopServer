@@ -42,5 +42,8 @@ public class Brand extends BaseStorableObject {
 		this.company = company;
 	}
 	
-	
+	@Override
+	public String toString(){
+		return "Service ["+this.name+"]";
+	}
 }

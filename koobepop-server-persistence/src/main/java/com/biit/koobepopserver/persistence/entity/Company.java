@@ -112,7 +112,7 @@ public class Company extends BaseStorableObject {
 	
 	@Override
 	public String toString(){
-		return getName();
+		return "Company ["+getName()+"]";
 	}
 	
 }

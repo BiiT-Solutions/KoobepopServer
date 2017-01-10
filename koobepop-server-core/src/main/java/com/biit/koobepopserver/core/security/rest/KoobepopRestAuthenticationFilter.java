@@ -1,0 +1,37 @@
+package com.biit.koobepopserver.core.security.rest;
+
+import java.io.IOException;
+
+import javax.servlet.FilterChain;
+import javax.servlet.FilterConfig;
+import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.web.context.support.WebApplicationContextUtils;
+
+import com.biit.webservice.rest.RestAuthenticationFilter;
+
+public class KoobepopRestAuthenticationFilter extends RestAuthenticationFilter {
+	private KoobepopRestAuthorizationService koobepopRestAuthorizationService;
+
+	/**
+	 * The parent extended needs to know what authorization service must call,
+	 * so this method passes the specific authorization class needed by the
+	 * parent to filter the request.
+	 */
+	@Override
+	public void doFilter(ServletRequest request, ServletResponse response, FilterChain filter) throws IOException, ServletException {
+		if (request instanceof HttpServletRequest) {
+			request.setAttribute(AUTHORIZATION_INSTANCE, koobepopRestAuthorizationService);
+			super.doFilter(request, response, filter);
+		}
+	}
+
+	@Override
+	public void init(FilterConfig filterConfig) throws ServletException {
+		koobepopRestAuthorizationService = WebApplicationContextUtils.getRequiredWebApplicationContext(filterConfig.getServletContext()).getBean(
+				KoobepopRestAuthorizationService.class);
+	}
+}

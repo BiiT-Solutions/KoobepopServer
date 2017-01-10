@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>koobepop-server-gui</artifactId>
+	<packaging>jar</packaging>
+	<name>KoobepopServer (Gui)</name>
+
+	<parent>
+		<groupId>com.biit</groupId>
+		<artifactId>koobepop-server</artifactId>
+		<version>0.0.2-SNAPSHOT</version>
+	</parent>
+
+	<properties>
+		<param.value.false><![CDATA[<param-value>false</param-value>]]></param.value.false>
+		<param.value.true><![CDATA[<param-value>true</param-value>]]></param.value.true>
+	</properties>
+	<profiles>
+		<!-- Modify the web.xml for the release profile -->
+		<profile>
+			<id>release</id>
+			<build>
+				<plugins>
+					<plugin>
+						<artifactId>maven-antrun-plugin</artifactId>
+						<version>${maven-antrun-plugin.version}</version>
+						<executions>
+							<execution>
+								<phase>process-resources</phase>
+								<configuration>
+									<target>
+										<!-- Modify the web.xml -->
+										<replaceregexp file="src/main/webapp/WEB-INF/web.xml"
+											match=".*(param-value).(false).(\/param-value).*" replace="${param.value.true}" />
+									</target>
+								</configuration>
+								<goals>
+									<goal>run</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
+
+	<dependencies>
+		<!-- BiiT dependencies -->
+		<dependency>
+			<groupId>com.biit</groupId>
+			<artifactId>${project.parent.artifactId}-core</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>${maven-surefire.version}</version>
+				<configuration>
+					<useFile>false</useFile>
+					<trimStackTrace>false</trimStackTrace>
+					<suiteXmlFiles>
+						<suiteXmlFile>src/test/config/testng.xml</suiteXmlFile>
+					</suiteXmlFiles>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.eclipse.jetty</groupId>
+				<artifactId>jetty-maven-plugin</artifactId>
+				<version>${jetty-maven-plugin.version}</version>
+				<configuration>
+					<systemProperties>
+						<systemProperty>
+							<name>jetty.port</name>
+							<value>${jetty.port}</value>
+						</systemProperty>
+					</systemProperties>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>

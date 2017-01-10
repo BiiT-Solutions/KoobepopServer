@@ -4,7 +4,6 @@ import javax.persistence.Cacheable;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.Cache;
@@ -43,5 +42,10 @@ public class Service extends BaseStorableObject {
 	public void setCompany(Company company) {
 		this.company = company;
 	}
-	
+
+	@Override
+	public String toString() {
+		return "Service [" + this.name + "]";
+	}
+
 }

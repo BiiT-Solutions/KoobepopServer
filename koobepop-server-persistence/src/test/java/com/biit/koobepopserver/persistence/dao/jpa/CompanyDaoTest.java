@@ -16,7 +16,6 @@ import org.testng.annotations.Test;
 import com.biit.koobepopserver.persistence.dao.ICompanyDao;
 import com.biit.koobepopserver.persistence.dao.IContactDao;
 import com.biit.koobepopserver.persistence.entity.Company;
-import com.biit.koobepopserver.persistence.entity.Contact;
 import com.biit.persistence.entity.exceptions.ElementCannotBeRemovedException;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -44,7 +43,6 @@ public class CompanyDaoTest extends AbstractTransactionalTestNGSpringContextTest
 		return company;
 	}
 
-
 	@Test
 	@Rollback(value = false)
 	@Transactional(value = TxType.NEVER)
@@ -62,16 +60,15 @@ public class CompanyDaoTest extends AbstractTransactionalTestNGSpringContextTest
 		Assert.assertEquals(companyDao.getRowCount(), 1);
 		Assert.assertNotNull(companyDao.getAll(COMPANY_NAME_1).get(0));
 	}
-	
+
 	/**
-	 * TODO Modify company to make a valid test 
+	 * TODO Modify company to make a valid test
 	 * */
 	@Test(dependsOnMethods = { "searchCompany" })
 	@Rollback(value = false)
 	@Transactional(value = TxType.NEVER)
 	public void editCompany() {
 		ContactDaoTest.createTestContact(CONTACT_NAME, CONTACT_PHONE, CONTACT_MAIL, company);
-		
 		company = companyDao.merge(company);
 		Assert.assertNotNull(contactDao.getAll(CONTACT_NAME, CONTACT_PHONE, CONTACT_MAIL).get(0));
 	}
