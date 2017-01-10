@@ -18,8 +18,7 @@
 	<!-- Scans the classpath for annotated components that will be auto-registered 
 		as Spring beans. For example @Component, @Controller and @Service. Make sure 
 		to set the correct base-package -->
-	<context:component-scan
-		base-package="com.biit.koobepopserver.persistence" />
+	<context:component-scan base-package="com.biit.koobepopserver.persistence" />
 
 	<!-- Read any *.properties file -->
 	<context:property-placeholder location="classpath*:*.properties" />
@@ -68,13 +67,13 @@
 		<property name="testConnectionOnCheckin" value="${c3p0.test.connection.on.checkin}" />
 	</bean>
 
-	<!-- Common JPA properties for KoobepopServer  -->
+	<!-- Common JPA properties for KoobepopServer -->
 	<bean id="commonJpaProperties" parent="hibernateJpaProperties">
 		<property name="sourceMap">
 			<map merge="true" />
 		</property>
 	</bean>
-	
+
 	<!-- Specific properties for KoobepopServer -->
 	<bean id="koobepopserverJpaProperties" parent="commonJpaProperties">
 		<property name="sourceMap">
@@ -82,7 +81,7 @@
 				<entry key="hibernate.hbm2ddl.import_files" value="${hibernate.hbm2ddl.import_files}" />
 			</map>
 		</property>
-	</bean>		
+	</bean>
 
 	<util:map id="hibernateJpaProperties">
 		<entry key="hibernate.dialect" value="${hibernate.dialect}" />
@@ -105,8 +104,8 @@
 		<entry key="hibernate.jdbc.use_streams_for_binary" value="${hibernate.jdbc.use_streams_for_binary}" />
 		<entry key="hibernate.max_fetch_depth" value="${hibernate.max_fetch_depth}" />
 		<!-- Second Level Cache -->
-		<!-- <entry key="hibernate.cache.use_second_level_cache" value="${hibernate.cache.use_second_level_cache}" />
-		<entry key="hibernate.cache.region.factory_class" value="${hibernate.cache.region.factory_class}" />
+		<entry key="hibernate.cache.use_second_level_cache" value="${hibernate.cache.use_second_level_cache}" />
+		<!-- <entry key="hibernate.cache.region.factory_class" value="${hibernate.cache.region.factory_class}" />
 		<entry key="hibernate.cache.use_query_cache" value="${hibernate.cache.use_query_cache}" />
 		<entry key="hibernate.cache.provider_class" value="${hibernate.cache.provider_class}" />
 		<entry key="hibernate.cache.use_structured_entries" value="${hibernate.cache.use_structured_entries}" />
@@ -115,7 +114,7 @@
 			value="${hibernate.cache.provider_configuration_file_resource_path}" />
 		<entry key="hibernate.cache.provider_class" value="${hibernate.cache.provider_class}" />
 		<entry key="hibernate.cache.use_query_cache" value="${hibernate.cache.use_query_cache}" />
-		<entry key="javax.persistence.sharedCache.mode" value="ENABLE_SELECTIVE" /> -->
+		<entry key="javax.persistence.sharedCache.mode" value="ENABLE_SELECTIVE" />-->
 	</util:map>
 
 
