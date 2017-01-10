@@ -25,17 +25,17 @@ public class CompanySearchService {
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	@Path("/getCompanyInvoicePrices")
+	@Path("/getCompanies")
 	public Response getCompanySearch(String petition){
-	
+		System.out.println("Petition: "+petition);
 		//TODO end this thing
 		SearchFromJson parsedPetition;
 		try {
 			parsedPetition = parseSearchPetition(petition);
 			List<Company> companies = searchCompanies(parsedPetition);
 			
-			String data = "'data':'some dummy data'";
-			return Response.ok((String) data, MediaType.APPLICATION_XML).build();
+			String data = "{\"data\":\"some dummy data\"}";
+			return Response.ok((String) data, MediaType.APPLICATION_JSON).build();
 		
 		} catch (JsonSyntaxException ex) {
 			KoobepopLogger.errorMessage(this.getClass().getName(), ex);
