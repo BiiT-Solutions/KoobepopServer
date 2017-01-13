@@ -11,9 +11,9 @@
 	<modules>
 		<module>koobepop-server-logger</module>
 		<module>koobepop-server-persistence</module>
-		<module>koobepop-server-core</module>
-		<module>koobepop-server-release</module>
+		<module>koobepop-server-core</module>		
 		<module>koobepop-server-gui</module>
+		<module>koobepop-server-release</module>
 	</modules>
 
 	<distributionManagement>
