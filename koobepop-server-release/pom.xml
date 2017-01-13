@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>koobepop-server-release</artifactId>
 	<packaging>jar</packaging>
@@ -9,7 +8,7 @@
 	<parent>
 		<groupId>com.biit</groupId>
 		<artifactId>koobepop-server</artifactId>
-		<version>0.0.2-SNAPSHOT</version>
+		<version>0.0.3-SNAPSHOT</version>
 	</parent>
 
 	<properties>
@@ -53,15 +52,11 @@
 								<configuration>
 									<target>
 										<!-- delete old tmp folder -->
-										<delete dir="${temporal-folder}" failonerror="false"
-											includeemptydirs="true" />
+										<delete dir="${temporal-folder}" failonerror="false" includeemptydirs="true" />
 										<!-- create tmp folder -->
 										<mkdir dir="${temporal-folder}" />
 										<!-- ZIP project -->
-										<copy
-											file="${war-file.source}/${project.parent.artifactId}-${project.parent.version}.war"
-											tofile="${temporal-folder}/${project.parent.artifactId}-${project.parent.version}.war"
-											overwrite="true" />
+										<copy file="${war-file.source}/${project.parent.artifactId}-${project.parent.version}.war" tofile="${temporal-folder}/${project.parent.artifactId}-${project.parent.version}.war" overwrite="true" />
 										<!-- copy database scripts -->
 										<copy todir="${temporal-folder}/database/" overwrite="true">
 											<fileset dir="./database" includes="**/*" />
@@ -71,8 +66,7 @@
 											<fileset dir="./license" includes="**/*" />
 										</copy>
 										<!-- create the final file -->
-										<zip basedir="${temporal-folder}/"
-											destfile="../${destination-file}-${project.version}.zip" />
+										<zip basedir="${temporal-folder}/" destfile="../${destination-file}-${project.version}.zip" />
 									</target>
 								</configuration>
 								<goals>
