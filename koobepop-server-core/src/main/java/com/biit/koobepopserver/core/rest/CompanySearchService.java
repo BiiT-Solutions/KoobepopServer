@@ -41,13 +41,10 @@ public class CompanySearchService {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/getCompanies")
 	public Response getCompanySearch(String petition) {
-		System.out.println("PETITION:"+petition);
-		//TODO end this thing
 		SearchFromJson parsedPetition;
 		try {
 			parsedPetition = parseSearchPetition(petition);
 			List<Company> companies = getSortedCompanies(parsedPetition);
-			System.out.println("Companies"+companies);
 			
 			GsonBuilder gsonBuilder = new GsonBuilder().excludeFieldsWithoutExposeAnnotation();
 			Gson gson = gsonBuilder.create();
