@@ -10,6 +10,7 @@ import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import com.biit.persistence.entity.BaseStorableObject;
+import com.google.gson.annotations.Expose;
 
 @Entity
 @Table(name = "contacts")
@@ -18,13 +19,17 @@ import com.biit.persistence.entity.BaseStorableObject;
 public class Contact extends BaseStorableObject {
 
 	private static final long serialVersionUID = 1172630136348751139L;
-
+	
+	@Expose
 	private String name;
 
+	@Expose
 	private String phone;
 
+	@Expose
 	private String mail;
 	
+	//no @Expose because of the bilateral reference
 	@ManyToOne(fetch = FetchType.LAZY, optional = false)
 	private Company company;
 

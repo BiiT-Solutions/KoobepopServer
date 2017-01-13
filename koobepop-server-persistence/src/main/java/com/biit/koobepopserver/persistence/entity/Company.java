@@ -17,6 +17,7 @@ import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import com.biit.persistence.entity.BaseStorableObject;
+import com.google.gson.annotations.Expose;
 
 @Entity
 @Table(name = "companies")
@@ -27,23 +28,30 @@ public class Company extends BaseStorableObject {
 
 	public static final int DESCRIPTION_LENGTH = 1000;
 	
+	@Expose //Gson takes this field for generating json
 	@Column(nullable=false)
 	private String name;
 	
+	@Expose
 	private String country;
-
+	
+	@Expose
 	@Column(length = DESCRIPTION_LENGTH)
 	private String description;
 
+	@Expose
 	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "company")
 	private List<Contact> contacts;
 
+	@Expose
 	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "company")
 	private Set<Brand> brands;
 	
+	@Expose
 	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "company")
 	private Set<Service> services;
 	
+	@Expose
 	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "company")
 	private Set<Product> products;
 	

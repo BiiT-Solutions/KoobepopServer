@@ -10,6 +10,7 @@ import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import com.biit.persistence.entity.BaseStorableObject;
+import com.google.gson.annotations.Expose;
 
 @Entity
 @Table(name = "services")
@@ -18,6 +19,7 @@ import com.biit.persistence.entity.BaseStorableObject;
 public class Service extends BaseStorableObject {
 	private static final long serialVersionUID = -3611299577577905581L;
 
+	@Expose
 	private String name;
 
 	@ManyToOne(fetch = FetchType.LAZY, optional = false)

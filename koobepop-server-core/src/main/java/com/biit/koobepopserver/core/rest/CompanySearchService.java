@@ -11,17 +11,16 @@ import javax.ws.rs.core.Response;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.biit.koobepopserver.core.jsoncreator.CompanySerializer;
 import com.biit.koobepopserver.logger.KoobepopLogger;
 import com.biit.koobepopserver.persistence.dao.IBrandDao;
 import com.biit.koobepopserver.persistence.dao.ICompanyDao;
 import com.biit.koobepopserver.persistence.dao.IProductDao;
 import com.biit.koobepopserver.persistence.dao.IServiceDao;
 import com.biit.koobepopserver.persistence.entity.Company;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.JsonSyntaxException;
 
 @Controller
@@ -48,18 +47,13 @@ public class CompanySearchService {
 		try {
 			parsedPetition = parseSearchPetition(petition);
 			List<Company> companies = getSortedCompanies(parsedPetition);
+			System.out.println("Companies"+companies);
 			
-			String data = "[{\"name\":\"Company\"}]";
+			GsonBuilder gsonBuilder = new GsonBuilder().excludeFieldsWithoutExposeAnnotation();
+			Gson gson = gsonBuilder.create();
 			
-			
-			String json = "";
-			for(Company company : companies){
-					json = new Gson().toJson(company);
-					System.out.println("Json"+json);
-					
-				}
-			
-			return Response.ok((String) data, MediaType.APPLICATION_JSON).build();
+			String json = gson.toJson(companies);
+			return Response.ok((String) json, MediaType.APPLICATION_JSON).build();
 
 		} catch (JsonSyntaxException ex) {
 			KoobepopLogger.errorMessage(this.getClass().getName(), ex);

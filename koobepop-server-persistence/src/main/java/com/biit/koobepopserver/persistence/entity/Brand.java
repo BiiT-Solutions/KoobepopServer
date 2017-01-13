@@ -9,6 +9,7 @@ import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import com.biit.persistence.entity.BaseStorableObject;
+import com.google.gson.annotations.Expose;
 
 @Entity
 @Table(name = "brands")
@@ -16,9 +17,11 @@ import com.biit.persistence.entity.BaseStorableObject;
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = "com.biit.koobepopserver.persistence.entity.Brand")
 public class Brand extends BaseStorableObject {
 	private static final long serialVersionUID = -1530395525317506930L;
-
+	
+	@Expose
 	private String name;
 
+	
 	@OneToOne(optional = false)
 	private Company company;
 
