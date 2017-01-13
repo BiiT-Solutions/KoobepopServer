@@ -119,12 +119,9 @@
 	</util:map>
 	
 	<!-- User Managment -->	
-	<bean id="authenticationService" class="com.biit.koobepopserver.core.security.AuthenticationService" />	
-	<bean id="authorizationService" class="com.biit.koobepopserver.core.security.AuthorizationService"/>
-	<bean id="securityService" class = "com.biit.koobepopserver.core.security.SecurityService" >
-		<property name="authenticationService" ref="authenticationService" />
-		<property name="authorizationService" ref="authorizationService" />
-	</bean>
+	<bean id="authenticationService" class="com.biit.liferay.security.AuthenticationService" />	
+	<bean id="authorizationService" class="com.biit.liferay.security.AuthorizationService"/>
+	
 
 	<bean id="hibernateVendor"
 		class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">

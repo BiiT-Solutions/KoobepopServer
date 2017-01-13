@@ -65,7 +65,7 @@ public class CompanySearchService {
 	}
 
 	/**
-	 * 
+	 * Gets all companies that fulfill the searchCriteria 
 	 * */
 	private List<Company> getSortedCompanies(SearchFromJson searchCriteria) {
 		List<Company> companies = companyDao.getAll(null, searchCriteria.getCountry());

@@ -3,7 +3,7 @@
 	<test name="KoobepopTest" enabled="true" preserve-order="true">
 		<groups>
 			<run>
-				<include name="companySearchServiceTest" />
+				<exclude name="companySearchServiceTest" />
 			</run>
 		</groups>
 		<classes>
