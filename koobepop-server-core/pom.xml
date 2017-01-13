@@ -97,7 +97,15 @@
 			<version>${org.springframework.ws.version}</version>
 			<scope>test</scope>
 		</dependency>
-		<!-- Support for testing Spring applications with tools such as JUnit and 
+		<!--  Used -->
+		<dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+            <version>2.6.3</version>
+            <scope>test</scope>
+        </dependency>
+		
+				<!-- Support for testing Spring applications with tools such as JUnit and 
 			TestNG This artifact is generally always defined with a 'test' scope for 
 			the integration testing framework and unit testing stubs -->
 		<dependency>
@@ -106,6 +114,7 @@
 			<version>${org.springframework.version}</version>
 			<scope>test</scope>
 		</dependency>
+		
 		<!-- BiiT dependencies -->
 		<dependency>
 			<groupId>com.biit</groupId>
@@ -118,7 +127,6 @@
 			<artifactId>rest-services-security</artifactId>
 			<version>${rest-services-security.version}</version>
 		</dependency>
-
 	</dependencies>
 
 	<build>

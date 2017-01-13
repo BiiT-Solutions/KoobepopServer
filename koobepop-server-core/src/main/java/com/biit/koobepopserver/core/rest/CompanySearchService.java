@@ -19,6 +19,8 @@ import com.biit.koobepopserver.persistence.dao.ICompanyDao;
 import com.biit.koobepopserver.persistence.dao.IProductDao;
 import com.biit.koobepopserver.persistence.dao.IServiceDao;
 import com.biit.koobepopserver.persistence.entity.Company;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 
@@ -40,13 +42,23 @@ public class CompanySearchService {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/getCompanies")
 	public Response getCompanySearch(String petition) {
-		// TODO end this thing
+		System.out.println("PETITION:"+petition);
+		//TODO end this thing
 		SearchFromJson parsedPetition;
 		try {
 			parsedPetition = parseSearchPetition(petition);
 			List<Company> companies = getSortedCompanies(parsedPetition);
-			System.out.println(companies);
+			
 			String data = "[{\"name\":\"Company\"}]";
+			
+			
+			String json = "";
+			for(Company company : companies){
+					json = new Gson().toJson(company);
+					System.out.println("Json"+json);
+					
+				}
+			
 			return Response.ok((String) data, MediaType.APPLICATION_JSON).build();
 
 		} catch (JsonSyntaxException ex) {
