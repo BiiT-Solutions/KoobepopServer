@@ -14,6 +14,10 @@
 	<properties>
 		<root.directory>${project.basedir}/..</root.directory>
 		<destination-file>${project.parent.artifactId}</destination-file>
+		<temporal-folder>tmp</temporal-folder>
+		<war-file.source>../${project.parent.artifactId}-gui/target/</war-file.source>
+		<documentation.source>./documentation</documentation.source>
+		<documentation.destination>./${temporal-folder}/documentation</documentation.destination>
 	</properties>
 
 
