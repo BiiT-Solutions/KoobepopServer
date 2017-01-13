@@ -3,11 +3,11 @@
 	<test name="KoobepopTest" enabled="true" preserve-order="true">
 		<groups>
 			<run>
-				
+				<include name="companySearchServiceTest" />
 			</run>
 		</groups>
 		<classes>
-
+			<class name="com.biit.koobepopserver.core.rest.CompanySearchServiceTest" />
 		</classes>
 	</test>
 </suite>

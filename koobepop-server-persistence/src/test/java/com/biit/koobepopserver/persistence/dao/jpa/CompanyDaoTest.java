@@ -13,6 +13,7 @@ import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.Test;
 
+import com.biit.koobepopserver.persistence.dao.IBrandDao;
 import com.biit.koobepopserver.persistence.dao.ICompanyDao;
 import com.biit.koobepopserver.persistence.dao.IContactDao;
 import com.biit.koobepopserver.persistence.entity.Company;
@@ -26,7 +27,15 @@ public class CompanyDaoTest extends AbstractTransactionalTestNGSpringContextTest
 	private final static String CONTACT_NAME = "Khvote";
 	private final static String CONTACT_MAIL = "kvhote@arcanumTest.com";
 	private final static String CONTACT_PHONE = "000000000";
-
+	
+	private final static String BRAND_NAME = "Artificery";
+	
+	private static final String PRODUCT_NAME = "Blodless";
+	
+	private static final String SERVICE_NAME = "Safeguard";
+	
+	private final static String COMPANY_COUNTRY_1 = "Commonwealth";
+	private final static String COMPANY_COUNTRY_2 = "Aturan Empire";
 	private final static String COMPANY_NAME_1 = "Arcanum";
 
 	private Company company;
@@ -36,10 +45,14 @@ public class CompanyDaoTest extends AbstractTransactionalTestNGSpringContextTest
 
 	@Autowired
 	private IContactDao contactDao;
+	
+	@Autowired
+	private IBrandDao brandDao;
 
-	public static Company createTestCompany(String name) {
+	public static Company createTestCompany(String name,String country) {
 		Company company = new Company();
 		company.setName(name);
+		company.setCountry(country);
 		return company;
 	}
 
@@ -48,7 +61,7 @@ public class CompanyDaoTest extends AbstractTransactionalTestNGSpringContextTest
 	@Transactional(value = TxType.NEVER)
 	public void storeCompany() {
 		Assert.assertEquals(companyDao.getRowCount(), 0);
-		company = createTestCompany(COMPANY_NAME_1);
+		company = createTestCompany(COMPANY_NAME_1,COMPANY_COUNTRY_1);
 		company = companyDao.makePersistent(company);
 		Assert.assertEquals(companyDao.getRowCount(), 1);
 	}
@@ -58,7 +71,8 @@ public class CompanyDaoTest extends AbstractTransactionalTestNGSpringContextTest
 	@Transactional(value = TxType.NEVER)
 	public void searchCompany() {
 		Assert.assertEquals(companyDao.getRowCount(), 1);
-		Assert.assertNotNull(companyDao.getAll(COMPANY_NAME_1).get(0));
+		//get by just name
+		Assert.assertNotNull(companyDao.getAll(COMPANY_NAME_1,null).get(0));
 	}
 
 	/**
@@ -68,9 +82,12 @@ public class CompanyDaoTest extends AbstractTransactionalTestNGSpringContextTest
 	@Rollback(value = false)
 	@Transactional(value = TxType.NEVER)
 	public void editCompany() {
+		//Contacts
 		ContactDaoTest.createTestContact(CONTACT_NAME, CONTACT_PHONE, CONTACT_MAIL, company);
 		company = companyDao.merge(company);
 		Assert.assertNotNull(contactDao.getAll(CONTACT_NAME, CONTACT_PHONE, CONTACT_MAIL).get(0));
+		
+		
 	}
 
 	@Test(dependsOnMethods = { "editCompany" })

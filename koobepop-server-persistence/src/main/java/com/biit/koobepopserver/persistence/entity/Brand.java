@@ -40,6 +40,9 @@ public class Brand extends BaseStorableObject {
 
 	public void setCompany(Company company) {
 		this.company = company;
+		if (company != null && !company.getBrands().contains(this)) {
+			company.getBrands().add(this);
+		}
 	}
 	
 	@Override

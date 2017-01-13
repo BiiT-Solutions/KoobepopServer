@@ -41,6 +41,9 @@ public class Product extends BaseStorableObject {
 
 	public void setCompany(Company company) {
 		this.company = company;
+		if (company != null && !company.getProducts().contains(this)) {
+			company.getProducts().add(this);
+		}
 	}
 
 	@Override

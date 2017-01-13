@@ -18,24 +18,27 @@ import com.biit.koobepopserver.persistence.dao.ICompanyDao;
 import com.biit.koobepopserver.persistence.entity.Company;
 
 @Repository
-public class CompanyDao extends AnnotatedGenericDao<Company, Long> implements ICompanyDao{
+public class CompanyDao extends AnnotatedGenericDao<Company, Long> implements ICompanyDao {
 
 	public CompanyDao() {
 		super(Company.class);
 	}
-	
+
 	@Override
 	@Transactional(propagation = Propagation.REQUIRED, isolation = Isolation.DEFAULT, readOnly = true)
-	public List<Company> getAll(String name){
+	public List<Company> getAll(String name, String country) {
 		CriteriaBuilder criteriaBuilder = getEntityManager().getCriteriaBuilder();
 		CriteriaQuery<Company> criteriaQuery = criteriaBuilder.createQuery(getEntityClass());
-		Root<Company> contact = criteriaQuery.from(getEntityClass());
+		Root<Company> company = criteriaQuery.from(getEntityClass());
 		List<Predicate> predicates = new ArrayList<Predicate>();
-		
+
 		if (name != null && name.length() > 0) {
-			predicates.add(criteriaBuilder.equal(contact.get("name"), name));
+			predicates.add(criteriaBuilder.equal(company.get("name"), name));
 		}
-		
+		if (country != null && country.length() > 0) {
+			predicates.add(criteriaBuilder.equal(company.get("country"), country));
+		}
+
 		try {
 			return getEntityManager().createQuery(criteriaQuery).getResultList();
 		} catch (NoResultException nre) {
@@ -43,5 +46,5 @@ public class CompanyDao extends AnnotatedGenericDao<Company, Long> implements IC
 		}
 	}
 
-
+	
 }

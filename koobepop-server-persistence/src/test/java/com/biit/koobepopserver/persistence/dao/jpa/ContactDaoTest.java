@@ -31,6 +31,7 @@ public class ContactDaoTest extends AbstractTransactionalTestNGSpringContextTest
 	private final static String CONTACT_MAIL2 = "simon@arcanumTest.com";
 	private final static String CONTACT_PHONE2 = "000000001";
 	private final static String COMPANY_NAME_1 = "Arcanum";
+	private final static String COMPANY_COUNTRY_1 = "Aturan Empire";
 
 	private Company company;
 
@@ -45,7 +46,7 @@ public class ContactDaoTest extends AbstractTransactionalTestNGSpringContextTest
 	@Transactional(value = TxType.NEVER)
 	public void storeCompanyForContact() {
 		Assert.assertEquals(companyDao.getRowCount(), 0);
-		company = CompanyDaoTest.createTestCompany(COMPANY_NAME_1);
+		company = CompanyDaoTest.createTestCompany(COMPANY_NAME_1, COMPANY_COUNTRY_1);
 		company = companyDao.makePersistent(company);
 		Assert.assertEquals(companyDao.getRowCount(), 1);
 	}

@@ -31,4 +31,8 @@ public class SearchFromJson {
 	public void setService(String service) {
 		this.service = service;
 	}	
+	@Override
+	public String toString(){
+		return "SearchFromJson  {brand:"+brand+", country:"+country+", product: "+product+", service: "+service+"}";
+					}
 }

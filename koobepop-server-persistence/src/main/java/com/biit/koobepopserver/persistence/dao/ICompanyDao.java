@@ -7,6 +7,6 @@ import com.biit.persistence.dao.IJpaGenericDao;
 
 public interface ICompanyDao  extends IJpaGenericDao<Company, Long> {
 
-	List<Company> getAll(String name);
+	List<Company> getAll(String name, String country);
 
 }

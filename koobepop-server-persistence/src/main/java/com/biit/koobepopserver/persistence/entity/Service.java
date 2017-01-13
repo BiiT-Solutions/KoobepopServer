@@ -41,6 +41,9 @@ public class Service extends BaseStorableObject {
 
 	public void setCompany(Company company) {
 		this.company = company;
+		if (company != null && !company.getServices().contains(this)) {
+			company.getServices().add(this);
+		}
 	}
 
 	@Override

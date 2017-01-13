@@ -29,6 +29,8 @@ public class Company extends BaseStorableObject {
 	
 	@Column(nullable=false)
 	private String name;
+	
+	private String country;
 
 	@Column(length = DESCRIPTION_LENGTH)
 	private String description;
@@ -110,6 +112,14 @@ public class Company extends BaseStorableObject {
 		}
 	}
 	
+	public String getCountry() {
+		return country;
+	}
+
+	public void setCountry(String country) {
+		this.country = country;
+	}
+
 	@Override
 	public String toString(){
 		return "Company ["+getName()+"]";
