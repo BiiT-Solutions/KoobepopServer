@@ -38,6 +38,7 @@ public class CompanyDao extends AnnotatedGenericDao<Company, Long> implements IC
 		if (country != null && country.length() > 0) {
 			predicates.add(criteriaBuilder.equal(company.get("country"), country));
 		}
+		criteriaQuery.where(criteriaBuilder.and(predicates.toArray(new Predicate[] {})));
 
 		try {
 			return getEntityManager().createQuery(criteriaQuery).getResultList();

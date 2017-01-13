@@ -37,7 +37,8 @@ public class CompanyDaoTest extends AbstractTransactionalTestNGSpringContextTest
 	private final static String COMPANY_COUNTRY_1 = "Commonwealth";
 	private final static String COMPANY_COUNTRY_2 = "Aturan Empire";
 	private final static String COMPANY_NAME_1 = "Arcanum";
-
+	private final static String COMPANY_NAME_2 = "Maer's court";
+	
 	private Company company;
 
 	@Autowired
@@ -71,8 +72,9 @@ public class CompanyDaoTest extends AbstractTransactionalTestNGSpringContextTest
 	@Transactional(value = TxType.NEVER)
 	public void searchCompany() {
 		Assert.assertEquals(companyDao.getRowCount(), 1);
-		//get by just name
+		//get by name
 		Assert.assertNotNull(companyDao.getAll(COMPANY_NAME_1,null).get(0));
+		Assert.assertTrue(companyDao.getAll(COMPANY_NAME_2,null).isEmpty());
 	}
 
 	/**

@@ -36,10 +36,9 @@ public class CompanySearchServiceTest  extends AbstractTransactionalTestNGSpring
 	@Test
 	public void testCompanySearch() throws Exception{
 		System.out.println("Tests ");
-		System.out.println(this.mockMvc.perform(MockMvcRequestBuilders.post("/rest/getCompanies")
+		System.out.println(this.mockMvc.perform(MockMvcRequestBuilders.post("/rest/getnies")
 											.contentType(MediaType.APPLICATION_JSON)
-											.content("{\"cads\"6546+84684Commonwealth"))
-											.andExpect(MockMvcResultMatchers.status().isOk()));
+											.content("{\"cads\"6546+84684Commonwealth")).andExpect(MockMvcResultMatchers.status().isOk()));
 		   
 		    
 	}

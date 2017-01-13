@@ -1,3 +1,4 @@
+
 package com.biit.koobepopserver.persistence.dao.jpa;
 
 import javax.transaction.Transactional;

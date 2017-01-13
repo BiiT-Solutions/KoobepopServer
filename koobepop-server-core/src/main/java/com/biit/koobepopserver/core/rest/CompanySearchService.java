@@ -12,7 +12,6 @@ import javax.ws.rs.core.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
-import com.biit.koobepopserver.core.jsoncreator.CompanySerializer;
 import com.biit.koobepopserver.logger.KoobepopLogger;
 import com.biit.koobepopserver.persistence.dao.IBrandDao;
 import com.biit.koobepopserver.persistence.dao.ICompanyDao;
