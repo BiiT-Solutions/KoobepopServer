@@ -3,6 +3,7 @@ package com.biit.koobepopserver.core.rest;
 import java.util.List;
 
 import javax.ws.rs.Consumes;
+import javax.ws.rs.OPTIONS;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -35,10 +36,26 @@ public class CompanySearchService {
 	@Autowired
 	private IBrandDao brandDao;
 
+	@OPTIONS
+	@Produces(MediaType.APPLICATION_JSON)
+	@Path("/getCompanies")
+	//TODO Response headers uncertain
+	public Response preflight() {
+	 return Response.ok().allow("POST","OPIONS")
+			 .header("Access-Control-Allow-Origin", "*")
+		     .header("Access-Control-Allow-Credentials", "POST")
+		     .header("Access-Control-Allow-Methods", "POST, OPTIONS")
+		     .header("Access-Control-Allow-Headers", "Content-Type, Accept, X-Requested-With")
+			 .build();
+	}
+	
+	
+	
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/getCompanies")
+	//TODO Response headers uncertain
 	public Response getCompanySearch(String petition) {
 		SearchFromJson parsedPetition;
 		try {
