@@ -78,13 +78,13 @@
 					<packagingExcludes>WEB-INF/classes/VAADIN/gwt-unitCache/**,
 						WEB-INF/classes/VAADIN/widgetsets/WEB-INF/**</packagingExcludes>
 					<warName>${project.parent.artifactId}-${project.parent.version}</warName>
-					<webResources>
+					<!-- <webResources>
 						<resource>
 							<directory>${project.basedir}/src/main/resources/META-INF</directory>
 							<filtering>true</filtering>
 							<targetPath>META-INF</targetPath>
 						</resource>
-					</webResources>
+					</webResources>-->
 					<archive>
 						<manifestEntries>
 							<Implementation-Version>${project.parent.version}</Implementation-Version>
