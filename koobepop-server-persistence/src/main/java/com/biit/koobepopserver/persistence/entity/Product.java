@@ -15,7 +15,7 @@ import com.google.gson.annotations.Expose;
 @Entity
 @Table(name = "products")
 @Cacheable(true)
-@Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = "com.biit.koobepopserver.persistence.entity.Brand")
+@Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = "com.biit.koobepopserver.persistence.entity.Product")
 public class Product extends BaseStorableObject {
 	private static final long serialVersionUID = 150876456165930307L;
 

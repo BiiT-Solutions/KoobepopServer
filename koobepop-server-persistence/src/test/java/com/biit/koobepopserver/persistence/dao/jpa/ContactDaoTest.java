@@ -1,4 +1,3 @@
-
 package com.biit.koobepopserver.persistence.dao.jpa;
 
 import javax.transaction.Transactional;
@@ -58,8 +57,9 @@ public class ContactDaoTest extends AbstractTransactionalTestNGSpringContextTest
 	public void storeContact() {
 		Assert.assertTrue(contactDao.getAll().isEmpty());
 		Contact contact = createTestContact(CONTACT_NAME, CONTACT_PHONE, CONTACT_MAIL, company);
-		contact=contactDao.makePersistent(contact);
+		contact = contactDao.makePersistent(contact);
 		Assert.assertFalse(contactDao.getAll().isEmpty());
+		Assert.assertEquals(contactDao.getAll(CONTACT_NAME, CONTACT_PHONE, CONTACT_MAIL).get(0).getName(), CONTACT_NAME);
 	}
 
 	@Test(dependsOnMethods = { "storeContact" })
@@ -69,10 +69,11 @@ public class ContactDaoTest extends AbstractTransactionalTestNGSpringContextTest
 		Assert.assertEquals(contactDao.getRowCount(), 1);
 		Assert.assertNotNull(contactDao.getAll(CONTACT_NAME, CONTACT_PHONE, CONTACT_MAIL).get(0));
 	}
-	@Test(dependsOnMethods={"searchContact"})
+
+	@Test(dependsOnMethods = { "searchContact" })
 	@Rollback(value = false)
 	@Transactional(value = TxType.NEVER)
-	public void editContact(){
+	public void editContact() {
 		Assert.assertEquals(contactDao.getRowCount(), 1);
 		Contact contact = contactDao.getAll(CONTACT_NAME, CONTACT_PHONE, CONTACT_MAIL).get(0);
 		contact.setName(CONTACT_NAME2);
@@ -80,13 +81,13 @@ public class ContactDaoTest extends AbstractTransactionalTestNGSpringContextTest
 		contact.setMail(CONTACT_MAIL2);
 		contact = contactDao.merge(contact);
 		Assert.assertEquals(contactDao.getRowCount(), 1);
-		Assert.assertNotNull(contactDao.getAll(CONTACT_NAME2,CONTACT_PHONE2,CONTACT_MAIL2).get(0));
+		Assert.assertNotNull(contactDao.getAll(CONTACT_NAME2, CONTACT_PHONE2, CONTACT_MAIL2).get(0));
 		contact.setName(CONTACT_NAME);
 		contact.setPhone(CONTACT_PHONE);
 		contact.setMail(CONTACT_MAIL);
 		contactDao.merge(contact);
 	}
-	
+
 	@Test(dependsOnMethods = { "editContact" })
 	@Rollback(value = false)
 	@Transactional(value = TxType.NEVER)

@@ -5,11 +5,17 @@
 			<run>
 				<include name="companyDao" />
 				<include name="contactDao" />
+				<include name="brandDao" />				
+				<include name="productDao" />
+				<include name="serviceDao" />
 			</run>
 		</groups>
 		<classes>
 			<class name="com.biit.koobepopserver.persistence.dao.jpa.CompanyDaoTest" />
 			<class name="com.biit.koobepopserver.persistence.dao.jpa.ContactDaoTest" />
+			<class name="com.biit.koobepopserver.persistence.dao.jpa.BrandDaoTest" />
+			<class name="com.biit.koobepopserver.persistence.dao.jpa.ProductDaoTest" />
+			<class name="com.biit.koobepopserver.persistence.dao.jpa.ServiceDaoTest" />
 		</classes>
 	</test>
 </suite>

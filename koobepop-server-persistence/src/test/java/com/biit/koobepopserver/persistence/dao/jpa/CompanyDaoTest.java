@@ -16,6 +16,8 @@ import org.testng.annotations.Test;
 import com.biit.koobepopserver.persistence.dao.IBrandDao;
 import com.biit.koobepopserver.persistence.dao.ICompanyDao;
 import com.biit.koobepopserver.persistence.dao.IContactDao;
+import com.biit.koobepopserver.persistence.dao.IProductDao;
+import com.biit.koobepopserver.persistence.dao.IServiceDao;
 import com.biit.koobepopserver.persistence.entity.Company;
 import com.biit.persistence.entity.exceptions.ElementCannotBeRemovedException;
 
@@ -39,6 +41,7 @@ public class CompanyDaoTest extends AbstractTransactionalTestNGSpringContextTest
 	private final static String COMPANY_NAME_1 = "Arcanum";
 	private final static String COMPANY_NAME_2 = "Maer's court";
 	
+	
 	private Company company;
 
 	@Autowired
@@ -49,6 +52,15 @@ public class CompanyDaoTest extends AbstractTransactionalTestNGSpringContextTest
 	
 	@Autowired
 	private IBrandDao brandDao;
+	
+	@Autowired
+	private IServiceDao serviceDao;
+	
+	@Autowired
+	private IProductDao productDao;
+	
+	
+	
 
 	public static Company createTestCompany(String name,String country) {
 		Company company = new Company();
@@ -63,8 +75,16 @@ public class CompanyDaoTest extends AbstractTransactionalTestNGSpringContextTest
 	public void storeCompany() {
 		Assert.assertEquals(companyDao.getRowCount(), 0);
 		company = createTestCompany(COMPANY_NAME_1,COMPANY_COUNTRY_1);
+		ServiceDaoTest.createTestService(SERVICE_NAME, company);
+		ProductDaoTest.createTestProduct(PRODUCT_NAME, company);
+		BrandDaoTest.createTestBrand(BRAND_NAME, company);
 		company = companyDao.makePersistent(company);
 		Assert.assertEquals(companyDao.getRowCount(), 1);
+		Assert.assertEquals(brandDao.getRowCount(), 1);
+		Assert.assertEquals(productDao.getRowCount(), 1);
+		Assert.assertEquals(serviceDao.getRowCount(), 1);
+
+		
 	}
 
 	@Test(dependsOnMethods = { "storeCompany" })
@@ -99,12 +119,20 @@ public class CompanyDaoTest extends AbstractTransactionalTestNGSpringContextTest
 		Assert.assertEquals(companyDao.getRowCount(), 1);
 		companyDao.makeTransient(company);
 		Assert.assertEquals(companyDao.getRowCount(), 0);
+		Assert.assertEquals(contactDao.getRowCount(), 0);
+		Assert.assertEquals(brandDao.getRowCount(), 0);
+		Assert.assertEquals(productDao.getRowCount(), 0);
+		Assert.assertEquals(serviceDao.getRowCount(), 0);
+
 	}
 
 	@AfterClass(alwaysRun = true)
 	@Rollback(value = false)
 	public void clearDatabase() throws ElementCannotBeRemovedException {
 		deleteFromTables(new String[] { "contacts" });
+		deleteFromTables(new String[] { "products" });
+		deleteFromTables(new String[] { "services" });
+		deleteFromTables(new String[] { "brands" });
 		deleteFromTables(new String[] { "companies" });
 		Assert.assertEquals(contactDao.getRowCount(), 0);
 		Assert.assertEquals(companyDao.getRowCount(), 0);
