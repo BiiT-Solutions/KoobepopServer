@@ -4,7 +4,6 @@ import javax.persistence.Cacheable;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.Cache;
@@ -19,7 +18,7 @@ import com.google.gson.annotations.Expose;
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = "com.biit.koobepopserver.persistence.entity.Brand")
 public class Brand extends BaseStorableObject {
 	private static final long serialVersionUID = -1530395525317506930L;
-	
+
 	@Expose
 	private String name;
 
@@ -48,9 +47,9 @@ public class Brand extends BaseStorableObject {
 			company.getBrands().add(this);
 		}
 	}
-	
+
 	@Override
-	public String toString(){
-		return "Brand ["+this.name+"]";
+	public String toString() {
+		return "Brand [" + this.name + "]";
 	}
 }
