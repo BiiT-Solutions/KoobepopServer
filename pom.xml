@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.biit</groupId>
 	<artifactId>koobepop-server</artifactId>
-	<version>0.0.15</version>
+	<version>0.0.16-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<name>KoobepopServer</name>
 	<description />
@@ -32,7 +32,7 @@
 	<scm>
 		<connection>scm:git:git.biit-solutions.com:KoobepopServer.git</connection>
 		<developerConnection>scm:git:git.biit-solutions.com:KoobepopServer.git</developerConnection>
-		<tag>koobepop-server-0.0.15</tag>
+		<tag>KoobepopServer</tag>
 	</scm>
 
 	<!-- -->
