@@ -21,7 +21,7 @@
 	<!-- Using Vaadin GUI -->
 	<servlet>
 		<servlet-name>Vaadin Application Servlet</servlet-name>
-		<servlet-class>com.biit.usmo.gui.UsmoServlet</servlet-class>
+		<servlet-class>com.biit.koobepop.gui.KoobepopServlet</servlet-class>
 		<init-param>
 			<param-name>closeIdleSessions</param-name>
 			<param-value>true</param-value>
