@@ -42,7 +42,7 @@
 	<!-- Transaction Manager -->
 	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
 		<property name="entityManagerFactory" ref="koobepopserverProjectManagerFactory" />
-		<property name="jpaDialect" ref="jpaDialect" />
+		<property name="jpaDialect" ref="hibernateJpaDialect" />
 	</bean>
 
 	<!-- Default Entity Manager defined in @Qualifier(value = "koobepopserverProjectManagerFactory") 
@@ -60,24 +60,33 @@
 		<property name="jpaProperties" ref="koobepopserverJpaProperties" />
 	</bean>
 
-	<bean id="jpaDialect" class="org.springframework.orm.jpa.vendor.HibernateJpaDialect" />
-
+	<bean id="hibernateJpaDialect" class="org.springframework.orm.jpa.vendor.HibernateJpaDialect" />
+	
 	<!-- Data Source -->
 	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
 		destroy-method="close">
+		<!-- Connection properties -->
 		<property name="driverClass" value="${hibernate.connection.driver_class}" />
 		<property name="jdbcUrl" value="${hibernate.connection.url}" />
 		<property name="user" value="${hibernate.connection.username}" />
 		<property name="password" value="${hibernate.connection.password}" />
-		<!-- C3p0 -->
+		<!-- C3p0 pool sizing -->
 		<property name="initialPoolSize" value="${c3p0.pool.initial_size}" />
 		<property name="minPoolSize" value="${c3p0.pool.min_size}" />
 		<property name="maxPoolSize" value="${c3p0.pool.max_size}" />
-		<property name="maxStatements" value="${c3p0.max_statements}" />
-		<property name="idleConnectionTestPeriod" value="${c3p0.idle_test_period}" />
-		<property name="loginTimeout" value="${c3p0.timeout}" />
-		<property name="acquireIncrement" value="${c3p0.acquire_increment}" />
-		<property name="preferredTestQuery" value="${c3p0.preferred.test.query}" />
+		<property name="maxStatements" value="${c3p0.pool.max_statements}" />
+		<property name="acquireIncrement" value="${c3p0.acquire.increment}" />
+		<!-- C3p0 retries -->
+		<property name="acquireRetryAttempts" value="${c3p0.acquire.retry_attempts}" />
+		<property name="acquireRetryDelay" value="${c3p0.acquire.retry_delay}" />
+		<property name="breakAfterAcquireFailure" value="${c3p0.acquire.failure_break}" />
+		<!-- C3p0 refreshing connections -->
+		<property name="maxIdleTime" value="${c3p0.max_idle_time}" />
+		<property name="maxConnectionAge" value="${c3p0.max_connection_age}" />
+		<!-- C3p0 timeouts and testing -->
+		<property name="idleConnectionTestPeriod" value="${c3p0.test.idle_period}" />
+		<property name="loginTimeout" value="${c3p0.login.timeout}" />
+		<property name="preferredTestQuery" value="${c3p0.test.preferred.query}" />
 		<property name="testConnectionOnCheckout" value="${c3p0.test.connection.on.checkout}" />
 		<property name="testConnectionOnCheckin" value="${c3p0.test.connection.on.checkin}" />
 	</bean>
@@ -140,6 +149,7 @@
 	<bean id="hibernateVendor"
 		class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
 	</bean>
+	
 	<tx:annotation-driven />
 
 	<!-- Enables Interceptors -->
