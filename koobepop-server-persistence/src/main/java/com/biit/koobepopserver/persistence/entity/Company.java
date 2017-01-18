@@ -10,6 +10,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.Lob;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -36,6 +37,7 @@ public class Company extends BaseStorableObject {
 	private String country;
 	
 	@Expose
+	@Lob
 	@Column(length = DESCRIPTION_LENGTH)
 	private String description;
 

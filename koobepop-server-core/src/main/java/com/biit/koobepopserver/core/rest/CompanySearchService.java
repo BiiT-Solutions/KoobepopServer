@@ -55,7 +55,6 @@ public class CompanySearchService {
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/getCompanies")
-	//TODO Response headers uncertain
 	public Response getCompanySearch(String petition) {
 		SearchFromJson parsedPetition;
 		try {

@@ -72,9 +72,15 @@
 		<exec-maven-plugin.version>1.2.1</exec-maven-plugin.version>
 		<jpa-schema-exporter.version>[0.3,0.4)</jpa-schema-exporter.version>
 		
-		<!-- BiiT Variables -->
+		<!-- Vaadin variables -->
+		<vaadin.version>7.7.6</vaadin.version>
+		<vaadin.plugin.version>${vaadin.version}</vaadin.plugin.version>
+		<vaadin.spring.version>1.0.0</vaadin.spring.version>
+		
+		<!-- BiiT Variables -->		
 		<liferay-authentication-client.version>[0.8,0.9)</liferay-authentication-client.version>
 		<storableobject-persistence-manager.version>[0.3,0.4)</storableobject-persistence-manager.version>
+		<biit-vaadin-common.version>[0.3,0.4)</biit-vaadin-common.version>
 	</properties>
 
 	<!-- -->
