@@ -21,7 +21,7 @@
 	<!-- Using Vaadin GUI -->
 	<servlet>
 		<servlet-name>Vaadin Application Servlet</servlet-name>
-		<servlet-class>com.biit.koobepop.gui.KoobepopServlet</servlet-class>
+		<servlet-class>com.biit.koobepopserver.gui.KoobepopServlet</servlet-class>
 		<init-param>
 			<param-name>closeIdleSessions</param-name>
 			<param-value>true</param-value>
@@ -58,14 +58,7 @@
 		<param-name>contextConfigLocation</param-name>
 		<param-value>classpath*:applicationContext.xml</param-value>
 	</context-param>
-	<listener>
-		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-	</listener>
-
-	<listener>
-		<listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
-	</listener>
-
+	
 	<!-- Apache Tomcat session expire -->
 	<session-config>
 		<session-timeout>61</session-timeout>

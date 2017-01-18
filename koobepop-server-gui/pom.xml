@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>koobepop-server-gui</artifactId>
 	<packaging>war</packaging>
@@ -10,7 +11,7 @@
 		<artifactId>koobepop-server</artifactId>
 		<version>0.0.20-SNAPSHOT</version>
 	</parent>
-	
+
 	<!-- Vaadin -->
 	<repositories>
 		<repository>
@@ -41,7 +42,7 @@
 			</snapshots>
 		</pluginRepository>
 	</pluginRepositories>
-	
+
 	<properties>
 		<param.value.false><![CDATA[<param-value>false</param-value>]]></param.value.false>
 		<param.value.true><![CDATA[<param-value>true</param-value>]]></param.value.true>
@@ -61,7 +62,8 @@
 								<configuration>
 									<target>
 										<!-- Modify the web.xml -->
-										<replaceregexp file="src/main/webapp/WEB-INF/web.xml" match=".*(param-value).(false).(\/param-value).*" replace="${param.value.true}" />
+										<replaceregexp file="src/main/webapp/WEB-INF/web.xml"
+											match=".*(param-value).(false).(\/param-value).*" replace="${param.value.true}" />
 									</target>
 								</configuration>
 								<goals>
@@ -76,7 +78,7 @@
 	</profiles>
 
 	<dependencies>
-	<!-- Vaadin -->
+		<!-- Vaadin -->
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>javax.servlet-api</artifactId>
@@ -152,13 +154,13 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
-		
+
 		<!-- BiiT dependencies -->
 		<dependency>
 			<groupId>com.biit</groupId>
 			<artifactId>${project.parent.artifactId}-core</artifactId>
 			<version>${project.version}</version>
-		</dependency>		
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -206,13 +208,9 @@
 					<packagingExcludes>WEB-INF/classes/VAADIN/gwt-unitCache/**,
 						WEB-INF/classes/VAADIN/widgetsets/WEB-INF/**</packagingExcludes>
 					<warName>${project.parent.artifactId}-${project.parent.version}</warName>
-					<!-- <webResources>
-						<resource>
-							<directory>${project.basedir}/src/main/resources/META-INF</directory>
-							<filtering>true</filtering>
-							<targetPath>META-INF</targetPath>
-						</resource>
-					</webResources>-->
+					<!-- <webResources> <resource> <directory>${project.basedir}/src/main/resources/META-INF</directory> 
+						<filtering>true</filtering> <targetPath>META-INF</targetPath> </resource> 
+						</webResources> -->
 					<archive>
 						<manifestEntries>
 							<Implementation-Version>${project.parent.version}</Implementation-Version>
