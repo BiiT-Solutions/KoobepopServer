@@ -14,7 +14,7 @@ import com.vaadin.spring.annotation.UIScope;
 public class KoobepopLogin extends MVPVaadinView<ILoginView, ILoginPresenter>{
 	private static final long serialVersionUID = 8674023750326851914L;
 
-	public static final String NAME="name";
+	public static final String NAME = "login";
 
 	@Autowired
 	private ILoginPresenter koobepopLoginPresenter;

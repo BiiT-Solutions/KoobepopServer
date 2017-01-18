@@ -3,6 +3,7 @@ package com.biit.koobepopserver.gui.login;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.biit.koobepopserver.core.security.ISecurityService;
+import com.biit.koobepopserver.gui.language.LanguageCode;
 import com.biit.vaadin.webpages.login.ILoginPresenter;
 import com.biit.vaadin.webpages.login.LoginPresenter;
 import com.vaadin.spring.annotation.SpringComponent;
@@ -17,32 +18,32 @@ public class KoobepopLoginPresenter extends LoginPresenter implements ILoginPres
 
 	@Override
 	public String getLoginCaption() {
-		return "";// LanguageCode.LOGIN_CAPTION_SIGN_IN.translation();
+		return  LanguageCode.LOGIN_CAPTION_SIGN_IN.translation();
 	}
 
 	@Override
 	public String getEmailCaption() {
-		return "";// LanguageCode.LOGIN_CAPTION_EMAIL.translation();
+		return LanguageCode.LOGIN_CAPTION_EMAIL.translation();
 	}
 
 	@Override
 	public String getPasswordCaption() {
-		return "";// LanguageCode.LOGIN_CAPTION_PASSWORD.translation();
+		return LanguageCode.LOGIN_CAPTION_PASSWORD.translation();
 	}
 
 	@Override
 	public String getUsernameRequiredErrorCaption() {
-		return "";// LanguageCode.LOGIN_ERROR_EMAIL.translation();
+		return LanguageCode.LOGIN_ERROR_EMAIL.translation();
 	}
 
 	@Override
 	public String getPasswordRequiredErrorCaption() {
-		return "";// LanguageCode.LOGIN_ERROR_PASSWORD.translation();
+		return LanguageCode.LOGIN_ERROR_PASSWORD.translation();
 	}
 
 	@Override
 	public String getNameVersion() {
-		return "";// LanguageCode.LOGIN_SCREEN_SYSTEM_NAME.translation(getCastedView().getVersion());
+		return LanguageCode.LOGIN_SCREEN_SYSTEM_NAME.translation();
 	}
 
 	@Override
