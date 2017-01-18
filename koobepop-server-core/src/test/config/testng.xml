@@ -3,6 +3,7 @@
 	<test name="KoobepopTest" enabled="true" preserve-order="true">
 		<groups>
 			<run>
+			<!-- not working -->
 				<exclude name="companySearchServiceTest" />
 			</run>
 		</groups>
