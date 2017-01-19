@@ -1,6 +1,9 @@
 package com.biit.koobepopserver.core.rest;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
+import java.util.Objects;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.OPTIONS;
@@ -94,7 +97,21 @@ public class CompanySearchService {
 		if (searchCriteria.getBrand() != null && searchCriteria.getBrand() != "") {
 			companies.retainAll(brandDao.getAll(searchCriteria.getBrand()));
 		}
+		Collections.sort(companies, new Comparator<Company>(){
+			@Override
+			public int compare(Company company1, Company company2) {
+				if (company1.getPriority() == null){
+					return -1;
+				}else if (company2.getPriority() == null){
+					return 1;
+				}else if (company1.getPriority() == company2.getPriority()){
+					return company1.getName().compareTo(company2.getName());
+				}else{					
+					return company1.getPriority().compareTo(company2.getPriority());	
+				}
+			}			
+			});
+		
 		return companies;
 	}
-
 }

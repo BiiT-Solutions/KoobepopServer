@@ -43,7 +43,7 @@ public class KoobepopLoginPresenter extends LoginPresenter implements ILoginPres
 
 	@Override
 	public String getNameVersion() {
-		return LanguageCode.LOGIN_SCREEN_SYSTEM_NAME.translation();
+		return LanguageCode.LOGIN_SCREEN_SYSTEM_NAME.translation(getCastedView().getVersion());
 	}
 
 	@Override

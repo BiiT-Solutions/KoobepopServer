@@ -28,14 +28,18 @@ public class Company extends BaseStorableObject {
 	private static final long serialVersionUID = -925528382828636133L;
 
 	public static final int DESCRIPTION_LENGTH = 1000;
-	
-	@Expose //Gson takes this field for generating json
-	@Column(nullable=false)
+
+	// Gson takes this field for generating json
+	@Expose
+	@Column(nullable = false)
 	private String name;
-	
+
 	@Expose
 	private String country;
-	
+
+	@Expose
+	private Integer priority;
+
 	@Expose
 	@Lob
 	@Column(length = DESCRIPTION_LENGTH)
@@ -48,16 +52,15 @@ public class Company extends BaseStorableObject {
 	@Expose
 	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "company")
 	private Set<Brand> brands;
-	
+
 	@Expose
 	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "company")
 	private Set<Service> services;
-	
+
 	@Expose
 	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "company")
 	private Set<Product> products;
-	
-	
+
 	public Company() {
 		super();
 		contacts = new ArrayList<>();
@@ -113,15 +116,15 @@ public class Company extends BaseStorableObject {
 	public void setProducts(Set<Product> products) {
 		this.products = products;
 	}
-	
-	public void addContact(Contact contact){
-		
-		if (contact != null && !this.contacts.contains(contact)){
-		this.contacts.add(contact);
-		contact.setCompany(this);
+
+	public void addContact(Contact contact) {
+
+		if (contact != null && !this.contacts.contains(contact)) {
+			this.contacts.add(contact);
+			contact.setCompany(this);
 		}
 	}
-	
+
 	public String getCountry() {
 		return country;
 	}
@@ -130,9 +133,18 @@ public class Company extends BaseStorableObject {
 		this.country = country;
 	}
 
+	public Integer getPriority() {
+		return priority;
+	}
+
+	public void setPriority(Integer priority) {
+		this.priority = priority;
+	}
+
 	@Override
-	public String toString(){
-		return "Company ["+getName()+"]";
+	public String toString() {
+		return "Company [" + getName() + "]";
 	}
 	
+
 }

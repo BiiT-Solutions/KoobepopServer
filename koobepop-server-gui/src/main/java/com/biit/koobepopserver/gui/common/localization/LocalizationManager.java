@@ -19,6 +19,7 @@ public class LocalizationManager {
 	private transient ApplicationContext applicationContext;
 
 	private static Locale getLocale() {
+		//TODO
 		// if (UserSessionHandler.getCurrent().getUser() != null) {
 		// return
 		// StringUtils.parseLocaleString(UserSessionHandler.getCurrent().getUser().getLanguageId());

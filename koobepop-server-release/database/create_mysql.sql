@@ -21,6 +21,7 @@
         country varchar(255),
         description longtext,
         name varchar(255) not null,
+        priority integer,
         primary key (ID)
     );
 
