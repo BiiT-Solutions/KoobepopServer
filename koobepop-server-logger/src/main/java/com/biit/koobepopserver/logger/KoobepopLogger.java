@@ -12,6 +12,10 @@ public class KoobepopLogger extends BiitLogger {
 	/**
 	 * Events that have business meaning (i.e. creating category, deleting form,
 	 * ...). To follow user actions.
+	 * 
+	 * @param className
+	 * 
+	 * @param message
 	 */
 	public static void info(String className, String message) {
 		info(logger, className, message);
@@ -21,6 +25,7 @@ public class KoobepopLogger extends BiitLogger {
 	 * Shows not critical errors. I.e. Email address not found, permissions not
 	 * allowed for this user, ...
 	 * 
+	 * @param className
 	 * @param message
 	 */
 	public static void warning(String className, String message) {
@@ -38,6 +43,7 @@ public class KoobepopLogger extends BiitLogger {
 	/**
 	 * To log any not expected error that can cause application malfunction.
 	 * 
+	 * @param className
 	 * @param message
 	 */
 	public static void severe(String className, String message) {
