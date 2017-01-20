@@ -1,6 +1,6 @@
 
     create table brands (
-        ID bigint not null,
+        ID bigint not null auto_increment,
         comparationId varchar(190) not null,
         createdBy DOUBLE,
         creationTime datetime not null,
@@ -12,7 +12,7 @@
     );
 
     create table companies (
-        ID bigint not null,
+        ID bigint not null auto_increment,
         comparationId varchar(190) not null,
         createdBy DOUBLE,
         creationTime datetime not null,
@@ -26,7 +26,7 @@
     );
 
     create table contacts (
-        ID bigint not null,
+        ID bigint not null auto_increment,
         comparationId varchar(190) not null,
         createdBy DOUBLE,
         creationTime datetime not null,
@@ -40,7 +40,7 @@
     );
 
     create table products (
-        ID bigint not null,
+        ID bigint not null auto_increment,
         comparationId varchar(190) not null,
         createdBy DOUBLE,
         creationTime datetime not null,
@@ -52,7 +52,7 @@
     );
 
     create table services (
-        ID bigint not null,
+        ID bigint not null auto_increment,
         comparationId varchar(190) not null,
         createdBy DOUBLE,
         creationTime datetime not null,
@@ -64,31 +64,16 @@
     );
 
     alter table brands 
-        add constraint UK_63cl4vrv0l1u5olpfgu4boabr  unique (ID);
-
-    alter table brands 
         add constraint UK_nyy90xnpja6key6186cdkodx9  unique (comparationId);
-
-    alter table companies 
-        add constraint UK_oywkn5b5ix8q5chvig3rcujkf  unique (ID);
 
     alter table companies 
         add constraint UK_mys0v4ijceuwyo36n3wxi1jjt  unique (comparationId);
 
     alter table contacts 
-        add constraint UK_c3xmupshnkpc9x0rvqor3utjw  unique (ID);
-
-    alter table contacts 
         add constraint UK_eto4kt1yn6ohcac5neprakxj2  unique (comparationId);
 
     alter table products 
-        add constraint UK_38cdqoaf39eu3mubej9y1kr8i  unique (ID);
-
-    alter table products 
         add constraint UK_5yty196mx2pywru86c9bmr3lq  unique (comparationId);
-
-    alter table services 
-        add constraint UK_lw5399jcp6u2ss4ntighdup8a  unique (ID);
 
     alter table services 
         add constraint UK_mevai8xr6q7yniqks4vged8gq  unique (comparationId);

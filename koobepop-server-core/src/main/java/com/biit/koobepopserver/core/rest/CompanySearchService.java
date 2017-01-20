@@ -1,5 +1,6 @@
 package com.biit.koobepopserver.core.rest;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -85,16 +86,8 @@ public class CompanySearchService {
 	 * @param searchCriteria
 	 * */
 	private List<Company> getSortedCompanies(SearchFromJson searchCriteria) {
-		List<Company> companies = companyDao.getAll(null, searchCriteria.getCountry());
-		if (searchCriteria.getService() != null && searchCriteria.getService() != "") {
-			companies.retainAll(serviceDao.getAll(searchCriteria.getService()));
-		}
-		if (searchCriteria.getProduct() != null && searchCriteria.getProduct() != "") {
-			companies.retainAll(productDao.getAll(searchCriteria.getProduct()));
-		}
-		if (searchCriteria.getBrand() != null && searchCriteria.getBrand() != "") {
-			companies.retainAll(brandDao.getAll(searchCriteria.getBrand()));
-		}
+		List<Company> companies = new ArrayList<Company>();
+		companies = companyDao.getAll(searchCriteria.getCountry(), searchCriteria.getBrand(), searchCriteria.getProduct(), searchCriteria.getService());
 		Collections.sort(companies, new Comparator<Company>() {
 			@Override
 			public int compare(Company company1, Company company2) {

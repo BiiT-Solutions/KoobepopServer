@@ -9,4 +9,6 @@ public interface ICompanyDao  extends IJpaGenericDao<Company, Long> {
 
 	List<Company> getAll(String name, String country);
 
+	List<Company> getAll(String country, String brand, String product, String service);
+
 }
