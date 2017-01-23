@@ -28,6 +28,7 @@
 			<artifactId>spring-web</artifactId>
 			<version>${org.springframework.version}</version>
 		</dependency>
+		
 		<!-- Activiti -->
 		<dependency>
 			<groupId>org.activiti</groupId>

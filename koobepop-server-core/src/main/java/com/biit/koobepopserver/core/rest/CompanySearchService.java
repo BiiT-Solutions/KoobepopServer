@@ -6,7 +6,6 @@ import java.util.Comparator;
 import java.util.List;
 
 import javax.ws.rs.Consumes;
-import javax.ws.rs.OPTIONS;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -15,6 +14,8 @@ import javax.ws.rs.core.Response;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.biit.koobepopserver.logger.KoobepopLogger;
 import com.biit.koobepopserver.persistence.dao.IBrandDao;
@@ -31,6 +32,7 @@ import com.google.gson.JsonSyntaxException;
  * */
 @Controller
 @Path("/")
+//@RestController
 public class CompanySearchService {
 
 	@Autowired
@@ -41,21 +43,12 @@ public class CompanySearchService {
 	private IProductDao productDao;
 	@Autowired
 	private IBrandDao brandDao;
-
-	@OPTIONS
-	@Produces(MediaType.APPLICATION_JSON)
-	@Path("/getCompanies")
-	// TODO Response headers uncertain
-	public Response preflight() {
-		return Response.ok().allow("POST", "OPIONS").header("Access-Control-Allow-Origin", "*").header("Access-Control-Allow-Credentials", "POST")
-				.header("Access-Control-Allow-Methods", "POST, OPTIONS").header("Access-Control-Allow-Headers", "Content-Type, Accept, X-Requested-With").build();
-	}
-
+	
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/getCompanies")
-	public Response getCompanySearch(String petition) {
+	public Response getCompanySearch(@RequestParam String petition) {
 		SearchFromJson parsedPetition;
 		try {
 			parsedPetition = parseSearchPetition(petition);
