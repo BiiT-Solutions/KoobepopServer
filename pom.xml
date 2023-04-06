@@ -56,7 +56,6 @@
 		<maven-surefire.version>2.19.1</maven-surefire.version>
 		<log4j.version>1.2.17</log4j.version>
 		<slf4j-log4j12.version>1.7.7</slf4j-log4j12.version>
-		<rest-services-security.version>[0.1,0.2)</rest-services-security.version>
 		<aspectj.version>1.8.2</aspectj.version>
 		<org.testng.version>6.8.7</org.testng.version>
 		<maven-scm-provider-gitexe.version>1.9.2</maven-scm-provider-gitexe.version>
@@ -75,12 +74,13 @@
 		<vaadin.plugin.version>${vaadin.version}</vaadin.plugin.version>
 		<vaadin.spring.version>1.0.0</vaadin.spring.version>
 		
-		<!-- BiiT Variables -->		
-		<liferay-authentication-client.version>[0.8,0.9)</liferay-authentication-client.version>
-		<storableobject-persistence-manager.version>[0.4,0.5)</storableobject-persistence-manager.version>
-		<biit-vaadin-common.version>[0.3,0.4)</biit-vaadin-common.version>
-		<biit-common-utils.version>[1.0,1.1)</biit-common-utils.version>
-		<jpa-schema-exporter.version>[0.4,0.5)</jpa-schema-exporter.version>
+		<!-- BiiT Variables -->
+		<rest-services-security.version>[1.0,1.1)</rest-services-security.version>
+		<liferay-authentication-client.version>[1.0,1.1)</liferay-authentication-client.version>
+		<storableobject-persistence-manager.version>[1.0,1.1)</storableobject-persistence-manager.version>
+		<biit-vaadin-common.version>[1.0,1.1)</biit-vaadin-common.version>
+		<biit-common-utils.version>[1.1,1.2)</biit-common-utils.version>
+		<jpa-schema-exporter.version>[0.5,0.6)</jpa-schema-exporter.version>
 	</properties>
 
 	<!-- -->

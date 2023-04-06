@@ -140,7 +140,7 @@
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-surefirejar-plugin</artifactId>
+				<artifactId>maven-surefire-plugin</artifactId>
 				<version>${maven-surefire.version}</version>
 				<configuration>
 					<useFile>false</useFile>
