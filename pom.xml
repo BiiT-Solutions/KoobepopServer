@@ -30,8 +30,8 @@
 	</distributionManagement>
 
 	<scm>
-		<connection>scm:git:git.biit-solutions.com:BiiT/KoobepopServer.git</connection>
-		<developerConnection>scm:git:git.biit-solutions.com:BiiT/KoobepopServer.git</developerConnection>
+		<connection>scm:git:git.biit-solutions.com:Java/KoobepopServer.git</connection>
+		<developerConnection>scm:git:git.biit-solutions.com:Java/KoobepopServer.git</developerConnection>
 		<tag>KoobepopServer</tag>
 	</scm>
 
