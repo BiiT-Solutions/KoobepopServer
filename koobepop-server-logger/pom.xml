@@ -6,7 +6,7 @@
 <name>KoobepopServer (Logger)</name>
 
 <parent>
-    <groupId>com.biit</groupId>
+    <groupId>com.biit-solutions</groupId>
     <artifactId>koobepop-server</artifactId>
     <version>0.0.29-SNAPSHOT</version>
 </parent>
@@ -24,7 +24,7 @@
     </dependency>
     <!-- File access and logger -->
     <dependency>
-        <groupId>com.biit</groupId>
+        <groupId>com.biit-solutions</groupId>
         <artifactId>common-utils</artifactId>
         <version>${biit-common-utils.version}</version>
     </dependency>

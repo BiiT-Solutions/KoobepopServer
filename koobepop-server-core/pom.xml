@@ -6,7 +6,7 @@
 	<name>KoobepopServer (Core)</name>
 
 	<parent>
-		<groupId>com.biit</groupId>
+		<groupId>com.biit-solutions</groupId>
 		<artifactId>koobepop-server</artifactId>
 		<version>0.0.29-SNAPSHOT</version>
 	</parent>
@@ -117,13 +117,13 @@
 		
 		<!-- BiiT dependencies -->
 		<dependency>
-			<groupId>com.biit</groupId>
+			<groupId>com.biit-solutions</groupId>
 			<artifactId>${project.parent.artifactId}-persistence</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 		<!-- Rest Authentication -->
 		<dependency>
-			<groupId>com.biit</groupId>
+			<groupId>com.biit-solutions</groupId>
 			<artifactId>rest-services-security</artifactId>
 			<version>${rest-services-security.version}</version>
 		</dependency>

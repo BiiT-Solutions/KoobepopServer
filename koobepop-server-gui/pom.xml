@@ -6,7 +6,7 @@
 	<name>KoobepopServer (Gui)</name>
 
 	<parent>
-		<groupId>com.biit</groupId>
+		<groupId>com.biit-solutions</groupId>
 		<artifactId>koobepop-server</artifactId>
 		<version>0.0.29-SNAPSHOT</version>
 	</parent>
@@ -117,7 +117,7 @@
 		</dependency>
 		<!-- Vaadin plugins -->
 		<dependency>
-			<groupId>com.biit</groupId>
+			<groupId>com.biit-solutions</groupId>
 			<artifactId>vaadin-common-widgetset</artifactId>
 			<version>${biit-vaadin-common.version}</version>
 		</dependency>
@@ -160,7 +160,7 @@
 		</dependency>
 		<!-- BiiT dependencies -->
 		<dependency>
-			<groupId>com.biit</groupId>
+			<groupId>com.biit-solutions</groupId>
 			<artifactId>${project.parent.artifactId}-core</artifactId>
 			<version>${project.version}</version>
 		</dependency>
